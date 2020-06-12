@@ -38,12 +38,7 @@ class Juego{
   iluminarSecuencia(){
     for(let i = 0; i < this.nivel; i++){
       const color = this.transformarNumeroAColor(this.secuencia[i]);
-      /* BUG: Al utilizar var dentro de un ciclo, su valor se va pisando,
-      ya que con cada iteracion se crea una nueva variable y al pasarla al setTimeout siempre su
-      valor es el ultimo que se asignó, si usamos let, cada bloque tendrá una asignacion de color
-      propia, y para mejorar más el programa y evitar más BUGS se define const ya que cada bloque
-      tendrá su propio valor y nunca se va a reasignar.
-      */
+
       setTimeout(() => this.iluminarColor(color), 800 * i);
     }
   }
@@ -84,10 +79,7 @@ class Juego{
   }
 
   agregarEventosClick(){
-    /*var self = this;
-      var _this = this;
-      con esas sentencias, se hace referencia a this, y es común encontrarlo
-    */
+  
     for(let btnColor in this.colores){
       this.colores[btnColor].addEventListener('click', this.elegirColor);
     }
